@@ -11,6 +11,7 @@ export interface CustomButtonProps {
 }
 export interface CustomFilterProps {
 	title: string;
+	options: Array<OptionsProps>;
 }
 export interface SearchManufacturerProps {
 	manufacturer: string;
@@ -36,4 +37,8 @@ export interface FilterProps {
 	fuel: string;
 	limit: number;
 	model: string;
+}
+export interface OptionsProps {
+	title: string;
+	value: string;
 }
