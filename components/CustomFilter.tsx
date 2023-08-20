@@ -1,27 +1,27 @@
 'use client';
-import { CustomFilterProps } from '@/types';
+import { CustomFilterProps } from '@types';
 import { Fragment, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Listbox, Transition } from '@headlessui/react';
-import { upadteSearchParams } from '@/utils';
+import { updateSearchParams } from '@utils';
 
 export const CustomFilter = ({ title, options }: CustomFilterProps) => {
 	const router = useRouter();
 	const [selected, setSelected] = useState(options[0]);
 
-	const handleUpdateParams = (e: { title: string, value: string }) => {
-		const newPathname = upadteSearchParams(title, e.value.toLowerCase());
+	const handleUpdateParams = (e: { title: string; value: string }) => {
+		const newPathName = updateSearchParams(title, e.value.toLowerCase());
 
-		router.push(newPathname);
-	}
+		router.push(newPathName);
+	};
 	return (
 		<div className='w-fit'>
 			<Listbox
 				value={selected}
 				onChange={(e) => {
-					setSelected(e)
-					handleUpdateParams(e)
+					setSelected(e);
+					handleUpdateParams(e);
 				}}
 			>
 				<div className='relative w-fit z-10'>
@@ -50,16 +50,18 @@ export const CustomFilter = ({ title, options }: CustomFilterProps) => {
 										${active ? 'bg-primary-blue text-white' : 'text-gray-900'}`}
 								>
 									{({ selected }) => (
-										<span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
-											{option.title}
-										</span>
+										<>
+											<span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`} >
+												{option.title}
+											</span>
+										</>
 									)}
 								</Listbox.Option>
 							))}
 						</Listbox.Options>
 					</Transition>
 				</div>
-			</Listbox >
-		</div >
-	)
+			</Listbox>
+		</div>
+	);
 }

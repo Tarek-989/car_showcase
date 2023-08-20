@@ -1,9 +1,9 @@
 'use client';
-import { CarProps } from '@/types';
-import { Fragment } from 'react'
+import { CarProps } from '@types';
+import { Fragment } from 'react';
 import Image from 'next/image';
 import { Dialog, Transition } from '@headlessui/react';
-import { generateCarImageUrl } from '@/utils';
+import { generateCarImageUrl } from '@utils';
 interface CarDetailsProps {
 	isOpen: boolean;
 	closeModel: () => void;
@@ -47,7 +47,7 @@ export const CarDetails = ({ isOpen, closeModel, car }: CarDetailsProps) => {
 							>
 								<Dialog.Panel
 									className='relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl
-									p-6 bg-white text-left sahdow-xl transition-all felx flex-col gap-5'
+									p-6 bg-white text-left shadow-xl transition-all flex flex-col gap-5'
 								>
 									<button
 										type='button'
@@ -111,9 +111,13 @@ export const CarDetails = ({ isOpen, closeModel, car }: CarDetailsProps) => {
 
 										<div className='mt-3 flex flex-wrap gap-4'>
 											{Object.entries(car).map(([key, value]) => (
-												<div className='flex justify-between gap-5 w-full text-right' key={key}>
-													<h4 className='text-grey capitalize'>{key.split('_').join(' ')}</h4>
-													<p className='text-black-100 font-semibold'>{value}</p>
+												<div className='flex justify-between gap-5 w-full text-right' key={key} >
+													<h4 className='text-grey capitalize'>
+														{key.split('_').join(' ')}
+													</h4>
+													<p className='text-black-100 font-semibold'>
+														{value}
+													</p>
 												</div>
 											))}
 										</div>
@@ -125,5 +129,5 @@ export const CarDetails = ({ isOpen, closeModel, car }: CarDetailsProps) => {
 				</Dialog>
 			</Transition>
 		</>
-	)
+	);
 }

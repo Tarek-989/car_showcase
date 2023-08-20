@@ -1,18 +1,18 @@
 'use client';
-import { useState } from 'react'
+import { useState } from 'react';
 import Image from 'next/image';
-import { CarProps } from '@/types';
-import { calculateCarRent, generateCarImageUrl } from '@/utils';
+import { CarProps } from '@types';
+import { calculateCarRent, generateCarImageUrl } from '@utils';
 import { CustomButton } from './CustomButton';
 import { CarDetails } from './CarDetails';
 
 interface CarCardProps {
-	car: CarProps
+	car: CarProps;
 }
 export const CarCard = ({ car }: CarCardProps) => {
 	const { city_mpg, year, make, model, transmission, drive } = car;
 	const carRent = calculateCarRent(city_mpg, year);
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className='car-card group'>
 			<div className='car-card__content'>
@@ -21,12 +21,12 @@ export const CarCard = ({ car }: CarCardProps) => {
 				</h2>
 			</div>
 
-			<p className='flex mt-6 text-[32px] font-extrabold'>
-				<span className='self-start text-[14px] font-semibold'>
+			<p className='flex mt-6 text-[32px] leading-[38px] font-extrabold'>
+				<span className='self-start text-[14px] leading-[17px] font-semibold'>
 					$
 				</span>
 				{carRent}
-				<span className='self-end text-[14px] font-medium'>
+				<span className='self-end text-[14px] leading-[17px] font-medium'>
 					/day
 				</span>
 			</p>
@@ -48,31 +48,31 @@ export const CarCard = ({ car }: CarCardProps) => {
 							src={'/steering-wheel.svg'}
 							width={20}
 							height={20}
-							alt='steering-wheel'
+							alt='steering wheel'
 						/>
-						<p className='text-[14px]'>
+						<p className='text-[14px] leading-[17px]'>
 							{transmission === 'a' ? 'Automatic' : 'Manual'}
 						</p>
 					</div>
-					<div className='flex flex-col justify-center items-center gap-2'>
+					<div className='car-card__icon'>
 						<Image
 							src={'/tire.svg'}
 							width={20}
 							height={20}
 							alt='tire'
 						/>
-						<p className='text-[14px]'>
+						<p className='car-card__icon-text'>
 							{drive.toUpperCase()}
 						</p>
 					</div>
-					<div className='flex flex-col justify-center items-center gap-2'>
+					<div className='car-card__icon'>
 						<Image
 							src={'/gas.svg'}
 							width={20}
 							height={20}
 							alt='gas'
 						/>
-						<p className='text-[14px]'>
+						<p className='car-card__icon-text'>
 							{city_mpg} MPG
 						</p>
 					</div>
@@ -94,5 +94,5 @@ export const CarCard = ({ car }: CarCardProps) => {
 				car={car}
 			/>
 		</div>
-	)
-}
+	);
+};

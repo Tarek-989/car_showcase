@@ -2,10 +2,10 @@ import Image from 'next/image';
 import { Fragment, useState } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 
-import { manufacturers } from '@/constants';
-import { SearchManufacturerProps } from '@/types';
+import { manufacturers } from '@constants';
+import { SearchManuFacturerProps } from '@types';
 
-export const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacturerProps) => {
+export const SearchManufacturer = ({ manufacturer, setManuFacturer }: SearchManuFacturerProps) => {
 	const [query, setQuery] = useState('');
 
 	const filteredManufacturers =
@@ -19,9 +19,8 @@ export const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManu
 
 	return (
 		<div className='search-manufacturer'>
-			<Combobox value={manufacturer} onChange={setManufacturer}>
+			<Combobox value={manufacturer} onChange={setManuFacturer}>
 				<div className='relative w-full'>
-					{/* Button for the combobox. Click on the icon to see the complete dropdown */}
 					<Combobox.Button className='absolute top-[14px]'>
 						<Image
 							src='/car-logo.svg'
@@ -32,7 +31,6 @@ export const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManu
 						/>
 					</Combobox.Button>
 
-					{/* Input field for searching */}
 					<Combobox.Input
 						className='search-manufacturer__input'
 						displayValue={(item: string) => item}
@@ -40,7 +38,6 @@ export const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManu
 						placeholder='Volkswagen...'
 					/>
 
-					{/* Transition for displaying the options */}
 					<Transition
 						as={Fragment}
 						leave='transition ease-in duration-100'
@@ -77,7 +74,6 @@ export const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManu
 													{item}
 												</span>
 
-												{/* Show an active blue background color if the option is selected */}
 												{selected ? (
 													<span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? 'text-white' : 'text-pribg-primary-purple'}`}
 													></span>
