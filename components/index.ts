@@ -6,3 +6,4 @@ export * from './CustomFilter';
 export * from './SerachBar';
 export * from './CarCard';
 export * from './CarDetails';
+export * from './ShowMore';

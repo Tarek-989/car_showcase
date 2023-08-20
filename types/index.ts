@@ -42,3 +42,7 @@ export interface OptionsProps {
 	title: string;
 	value: string;
 }
+export interface ShowMoreProps {
+	pageNumber: number;
+	isNext: boolean;
+}
